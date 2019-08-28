@@ -12,7 +12,7 @@ import android.os.Bundle;
 
 
 public class MainActivity extends AppCompatActivity {
-    MensajeRecibido mensaje = new MensajeRecibido();
+    private MensajeRecibido mensaje;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        this.mensaje = new MensajeRecibido();
         IntentFilter intel = new IntentFilter("provider.Telephony.SMS_RECEIVED");
-        registerReceiver(mensaje,intel);
+        registerReceiver(this.mensaje,intel);
     }
 
     @Override
