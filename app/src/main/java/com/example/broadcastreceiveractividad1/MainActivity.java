@@ -2,6 +2,7 @@ package com.example.broadcastreceiveractividad1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MensajeRecibido mensaje = new MensajeRecibido();
+        IntentFilter intel = new IntentFilter("provider.Telephony.SMS_RECEIVED");
+        registerReceiver(mensaje,intel);
+    }
 }
